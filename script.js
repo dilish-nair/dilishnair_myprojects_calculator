@@ -86,9 +86,7 @@ document.addEventListener("keypress", function(event) {
                   currentValue += value;
           }
 
-          // Replace Module with %
-          // currentValue = currentValue.replace("Module", "%")
-
+          
           // Update the display
           display.value = currentValue;
       });
