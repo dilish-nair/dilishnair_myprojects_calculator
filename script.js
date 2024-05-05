@@ -6,11 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Get all buttons
   const buttons = document.querySelectorAll("button");
 
-  // Initialize the display value
-  let currentValue = "";
-  let memmory = 0;
-
-   // Map keyboard keys to button values
+  // Map keyboard keys to button values
    const keyboardShortcuts = {
     "0": "0",
     "1": "1",
@@ -27,17 +23,24 @@ document.addEventListener("DOMContentLoaded", function() {
     "-": "-",
     "*": "*",
     "/": "/",
-    "%": "Module",
+    "%": "%",
+    "^": "^",
+    " ": "Root",
+    "M": "M +",
+    "m": "M -",
+    "R": "MRC",
     "Enter": "=",
     "Backspace": "Clear",
     "Delete": "AC"
 };
 
 // Add event listener for key press
-document.addEventListener("keypress", function(event) {
+document.addEventListener("keydown", function(event) {
     const key = event.key;
+    console.log("Key pressed:", key);
     if (keyboardShortcuts.hasOwnProperty(key)) {
         const buttonValue = keyboardShortcuts[key];
+        console.log("Button value:", buttonValue);
         // Find the button with the matching value
         const button = Array.from(buttons).find(button => button.textContent === buttonValue);
         if (button) {
