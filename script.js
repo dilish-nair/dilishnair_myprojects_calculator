@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let currentValue = "";
   let memmory = 0;
 
-  // Map keyboard keys to button values
+   // Map keyboard keys to button values
    const keyboardShortcuts = {
     "0": "0",
     "1": "1",
@@ -59,13 +59,18 @@ document.addEventListener("keypress", function(event) {
               case "Clear":
                   currentValue = currentValue.slice(0, -1);
                   break;
-              case "=":
-                  try {
-                      currentValue = eval(currentValue);
-                  } catch(err) {
-                      currentValue = "Error";
-                  }
-                  break;
+                  case "=":
+                    try {
+                        if (currentValue.includes("^")) {
+                            const [x, y] = currentValue.split("^");
+                            currentValue = Math.pow(parseFloat(x), parseFloat(y)); // Calculate x^y
+                        } else {
+                            currentValue = eval(currentValue);
+                        }
+                    } catch(err) {
+                        currentValue = "Error";
+                    }
+                    break;
               case "Root":
                   currentValue = Math.sqrt(currentValue);
                   break;
@@ -82,14 +87,23 @@ document.addEventListener("keypress", function(event) {
               case "MRC":
                   currentValue = memmory
                   break;
-              // case "Module":
-              //     currentValue += "%"
-              //     break;
+              case "Module":
+                //   currentValue += "%"
+                currentValue = eval(currentValue.replace("/", "%"))
+                  break;
+            //   case "^":
+            //     if (currentValue.includes("^")) {
+            //         const [x, y] = currentValue.split("^");
+            //         currentValue = Math.pow(parseFloat(x), parseFloat(y)); // Calculate x^y
+            //     }
+            //       break;
               default:
                   currentValue += value;
           }
 
-          
+        //   Replace Module with %
+        //   currentValue = currentValue.replace("Module", "%")
+
           // Update the display
           display.value = currentValue;
       });
