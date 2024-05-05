@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
   let currentValue = "";
   let memmory = 0;
 
-  const keyboardShortcuts = {
+  // Map keyboard keys to button values
+   const keyboardShortcuts = {
     "0": "0",
     "1": "1",
     "2": "2",
@@ -26,12 +27,10 @@ document.addEventListener("DOMContentLoaded", function() {
     "-": "-",
     "*": "*",
     "/": "/",
-    "%": "%",
+    "%": "Module",
     "Enter": "=",
     "Backspace": "Clear",
-    "Delete": "AC",
-    "Space": "AC",
-    "^": "^",
+    "Delete": "AC"
 };
 
 // Add event listener for key press
@@ -39,7 +38,11 @@ document.addEventListener("keypress", function(event) {
     const key = event.key;
     if (keyboardShortcuts.hasOwnProperty(key)) {
         const buttonValue = keyboardShortcuts[key];
-        document.querySelector(`button:contains('${buttonValue}')`).click();
+        // Find the button with the matching value
+        const button = Array.from(buttons).find(button => button.textContent === buttonValue);
+        if (button) {
+            button.click(); // Simulate click on the button
+        }
     }
 });
 
