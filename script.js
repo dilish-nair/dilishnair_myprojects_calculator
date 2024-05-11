@@ -94,19 +94,12 @@ document.addEventListener("keydown", function(event) {
                 //   currentValue += "%"
                 currentValue = eval(currentValue.replace("/", "%"))
                   break;
-            //   case "^":
-            //     if (currentValue.includes("^")) {
-            //         const [x, y] = currentValue.split("^");
-            //         currentValue = Math.pow(parseFloat(x), parseFloat(y)); // Calculate x^y
-            //     }
-            //       break;
+            
               default:
                   currentValue += value;
           }
 
-        //   Replace Module with %
-        //   currentValue = currentValue.replace("Module", "%")
-
+        
           // Update the display
           display.value = currentValue;
       });
