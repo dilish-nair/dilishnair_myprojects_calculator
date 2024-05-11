@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", function() {
     "R": "MRC",
     "Enter": "=",
     "Backspace": "Clear",
-    "Delete": "AC"
+    "Delete": "AC",
+     "O": "Module"
 };
 
 // Add event listener for key press
