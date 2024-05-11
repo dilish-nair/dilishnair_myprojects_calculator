@@ -48,11 +48,12 @@ document.addEventListener("keydown", function(event) {
         }
     }
 });
-
+ let memmory = 0;
   // Add event listener to each button
   buttons.forEach(button => {
       button.addEventListener("click", function() {
           const value = this.textContent;
+       
 
           // Perform action based on the button clicked
           switch(value) {
